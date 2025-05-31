@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://2snkhllfbb3f"]
+
+[ext_resource type="Script" path="res://Object/Trap/Trapscript.gd" id="1_4vnm6"]
+[ext_resource type="PackedScene" uid="uid://b0y8006m6qgc" path="res://Object/Trap/BearTrapModel.tscn" id="2_pwdkd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_crwuk"]
+size = Vector3(0.1, 0.2, 0.1)
+
+[node name="Area3D" type="Area3D"]
+script = ExtResource("1_4vnm6")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00433397, 0.1, 0.00402021)
+shape = SubResource("BoxShape3D_crwuk")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("2_pwdkd")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

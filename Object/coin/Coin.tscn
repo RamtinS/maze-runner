@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bd8407l8je4k0"]
+
+[ext_resource type="Script" path="res://Object/Coin/coin_script.gd" id="1_7ohfw"]
+[ext_resource type="ArrayMesh" uid="uid://dsf0pyc5sn82f" path="res://Assets/CoinMesh.res" id="2_11oht"]
+[ext_resource type="AudioStream" uid="uid://dti4q486pgw6q" path="res://Audio/coin_sound.mp3" id="3_ht6tr"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rq63j"]
+
+[node name="Coin" type="Area3D"]
+script = ExtResource("1_7ohfw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+mesh = ExtResource("2_11oht")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_rq63j")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_ht6tr")
+volume_db = -30.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://lni46s5xbbwp"]
+
+[ext_resource type="Script" path="res://Object/Walls/animatable_body_3d.gd" id="1_kmjw6"]
+[ext_resource type="Texture2D" uid="uid://4ijrapsukynx" path="res://Pictures/wall.jpg" id="2_16fe8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_70o6g"]
+size = Vector3(3, 12, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jfjmj"]
+albedo_texture = ExtResource("2_16fe8")
+uv1_scale = Vector3(3, 12, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_p50v6"]
+material = SubResource("StandardMaterial3D_jfjmj")
+size = Vector3(3, 12, 3)
+
+[sub_resource type="Animation" id="Animation_7j2gc"]
+resource_name = "move"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2.98023e-08, 4, 7.99),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-3, 0, 0), Vector3(0, 0, 0), Vector3(-3, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gta8s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rntbc"]
+_data = {
+"RESET": SubResource("Animation_gta8s"),
+"move": SubResource("Animation_7j2gc")
+}
+
+[node name="MovingWalls2" type="Node3D"]
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+script = ExtResource("1_kmjw6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
+shape = SubResource("BoxShape3D_70o6g")
+
+[node name="Wall" type="MeshInstance3D" parent="AnimatableBody3D"]
+mesh = SubResource("BoxMesh_p50v6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody3D"]
+libraries = {
+"": SubResource("AnimationLibrary_rntbc")
+}

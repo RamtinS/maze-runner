@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0y8006m6qgc"]
+
+[ext_resource type="PackedScene" uid="uid://f4rm1go6rwwc" path="res://Assets/Models/Spike/bear_trap-2.glb" id="1_oybx1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mujrf"]
+albedo_color = Color(0.0588235, 0.0588235, 0.0588235, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_adgk3"]
+albedo_color = Color(0.06, 0.0581, 0.057, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w033x"]
+albedo_color = Color(0.0588235, 0.0588235, 0.0588235, 1)
+metallic = 0.28
+roughness = 0.3
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_oybx1")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="Jaw_1_lambert2_0" parent="Sketchfab_model/59ca6061e3b445f8aa15807c160ca339_fbx/Object_2/RootNode/Object_4/Jaw_1" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_mujrf")
+
+[node name="Jaw_2_lambert2_0" parent="Sketchfab_model/59ca6061e3b445f8aa15807c160ca339_fbx/Object_2/RootNode/Object_4/Jaw_2" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_adgk3")
+
+[node name="Base_lambert2_0" parent="Sketchfab_model/59ca6061e3b445f8aa15807c160ca339_fbx/Object_2/RootNode/Object_4/Base" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_w033x")

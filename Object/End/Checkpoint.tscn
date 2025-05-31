@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bag4ss1r0rtcq"]
+
+[ext_resource type="Script" path="res://Object/End/CheckpointScript.gd" id="1_rbbiv"]
+[ext_resource type="ArrayMesh" uid="uid://bsjmnmb30avsx" path="res://Assets/Models/Checkpoint/CheckpointMesh.res" id="2_is2ye"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_au7fk"]
+radius = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v40ka"]
+albedo_color = Color(0.342649, 0.605458, 0.856131, 1)
+metallic = 1.0
+roughness = 0.3
+
+[node name="Checkpoint" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.29697e-05, -0.00802839, -8.60691e-05)
+script = ExtResource("1_rbbiv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_au7fk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0158272, -4.76837e-07, -0.0191202)
+mesh = ExtResource("2_is2ye")
+surface_material_override/0 = SubResource("StandardMaterial3D_v40ka")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
