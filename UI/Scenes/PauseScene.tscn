@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://btucnv55w1ae4"]
+
+[ext_resource type="Script" path="res://UI/Scripts/pause_scene.gd" id="1_75i8j"]
+
+[node name="Control" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_75i8j")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.06, 0.06, 0.06, 0.52549)
+
+[node name="Control" type="Control" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = -141.0
+offset_right = -134.0
+offset_bottom = -141.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Resume" type="Button" parent="ColorRect/Control"]
+offset_right = 240.0
+offset_bottom = 91.0
+mouse_filter = 1
+theme_override_font_sizes/font_size = 60
+text = "Resume
+"
+
+[node name="Exit" type="Button" parent="ColorRect/Control"]
+offset_top = 191.0
+offset_right = 240.0
+offset_bottom = 282.0
+mouse_filter = 1
+theme_override_font_sizes/font_size = 60
+text = "Quit
+"
+
+[connection signal="pressed" from="ColorRect/Control/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="ColorRect/Control/Exit" to="." method="_on_exit_pressed"]

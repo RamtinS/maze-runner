@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjkp40v614n3b"]
+
+[ext_resource type="Script" path="res://UI/Scripts/difficulty.gd" id="1_27gmd"]
+[ext_resource type="Texture2D" uid="uid://c06w2j716qjxx" path="res://Pictures/maze_background.jpg" id="1_qx2cd"]
+[ext_resource type="AudioStream" uid="uid://ud8ry772g6sd" path="res://Audio/menu.mp3" id="2_t4dn7"]
+
+[node name="Difficulty" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_27gmd")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_qx2cd")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/v_separation = 10
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Choose difficulty"
+
+[node name="Hard" type="Button" parent="CanvasLayer/CenterContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Hard"
+
+[node name="Normal" type="Button" parent="CanvasLayer/CenterContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Normal
+"
+
+[node name="Easy" type="Button" parent="CanvasLayer/CenterContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Easy"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_t4dn7")
+volume_db = -20.0
+autoplay = true
+
+[connection signal="pressed" from="CanvasLayer/CenterContainer/GridContainer/Hard" to="." method="_on_hard_pressed"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/GridContainer/Normal" to="." method="_on_normal_pressed"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/GridContainer/Easy" to="." method="_on_easy_pressed"]

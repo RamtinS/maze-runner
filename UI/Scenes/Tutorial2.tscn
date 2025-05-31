@@ -1,0 +1,291 @@
+[gd_scene load_steps=9 format=3 uid="uid://b5jewliitg2rd"]
+
+[ext_resource type="Texture2D" uid="uid://c06w2j716qjxx" path="res://Pictures/maze_background.jpg" id="1_flvd6"]
+[ext_resource type="Script" path="res://UI/Scripts/tutorial_2.gd" id="1_h7x63"]
+[ext_resource type="Texture2D" uid="uid://bc5vq00hri5v7" path="res://Pictures/Tutorial/Coin.png" id="2_d7phw"]
+[ext_resource type="Texture2D" uid="uid://ydmaumg4h6ei" path="res://Pictures/Tutorial/Heart.png" id="2_vg184"]
+[ext_resource type="Texture2D" uid="uid://bm35rqcmlovkt" path="res://Pictures/Tutorial/Trap.png" id="4_hcri2"]
+[ext_resource type="Texture2D" uid="uid://b1m8qcljlqfi1" path="res://Pictures/Tutorial/Checkpoint.png" id="5_10hru"]
+[ext_resource type="Texture2D" uid="uid://baqkngt6xwnbo" path="res://Pictures/Tutorial/Scoreboard.png" id="6_oktt3"]
+[ext_resource type="Texture2D" uid="uid://i65pv8v877sb" path="res://Pictures/Tutorial/HealthBar.png" id="7_h4m3f"]
+
+[node name="Tutorial2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h7x63")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 4.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.997458, 1.00818)
+texture = ExtResource("1_flvd6")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.103
+anchor_right = 0.5
+anchor_bottom = 0.103
+offset_left = -113.0
+offset_top = -41.24
+offset_right = 113.0
+offset_bottom = 41.76
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 60
+text = "Tutorial"
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.108
+anchor_top = 0.128
+anchor_right = 0.108
+anchor_bottom = 0.128
+offset_left = -137.36
+offset_top = -68.24
+offset_right = 135.64
+offset_bottom = 67.76
+theme_override_constants/v_separation = 10
+
+[node name="Play" type="Button" parent="CanvasLayer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Play game"
+
+[node name="Menu" type="Button" parent="CanvasLayer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Back to menu"
+
+[node name="Tip" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.499
+anchor_top = 0.239
+anchor_right = 0.499
+anchor_bottom = 0.239
+offset_left = -537.08
+offset_top = -80.12
+offset_right = 537.92
+offset_bottom = -38.12
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Discover treasures or face traps guarding your path through the maze."
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -326.0
+offset_top = 56.0
+offset_right = -106.0
+offset_bottom = 156.0
+grow_horizontal = 0
+theme_override_constants/separation = 20
+
+[node name="Next" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Next"
+
+[node name="Back" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Back
+"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -963.0
+offset_top = -555.0
+offset_right = -923.0
+offset_bottom = -515.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthBar" type="Control" parent="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 60.0
+offset_right = 60.0
+
+[node name="Heart" type="TextureRect" parent="Control/HealthBar"]
+layout_mode = 2
+offset_left = 150.0
+offset_top = 289.0
+offset_right = 904.0
+offset_bottom = 953.0
+scale = Vector2(0.483158, 0.219024)
+texture = ExtResource("7_h4m3f")
+
+[node name="Label" type="Label" parent="Control/HealthBar"]
+layout_mode = 2
+offset_left = 6.0
+offset_top = 466.0
+offset_right = 662.0
+offset_bottom = 539.0
+theme_override_font_sizes/font_size = 25
+text = "This is your health bar. 
+Keep it full, or it's game over!"
+horizontal_alignment = 1
+
+[node name="ScoreBoard" type="Control" parent="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 660.0
+offset_right = 660.0
+
+[node name="Heart" type="TextureRect" parent="Control/ScoreBoard"]
+layout_mode = 2
+offset_left = 155.0
+offset_top = 288.0
+offset_right = 909.0
+offset_bottom = 952.0
+scale = Vector2(0.472596, 0.211989)
+texture = ExtResource("6_oktt3")
+
+[node name="Label" type="Label" parent="Control/ScoreBoard"]
+layout_mode = 2
+offset_left = 141.0
+offset_top = 473.0
+offset_right = 574.0
+offset_bottom = 546.0
+theme_override_font_sizes/font_size = 25
+text = "Shows collected coins 
+and and time spent in the maze."
+horizontal_alignment = 1
+
+[node name="TrapInfo" type="Control" parent="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1260.0
+offset_right = 1260.0
+
+[node name="Trap" type="TextureRect" parent="Control/TrapInfo"]
+layout_mode = 2
+offset_left = 189.0
+offset_top = 286.0
+offset_right = 909.0
+offset_bottom = 808.0
+scale = Vector2(0.348482, 0.402309)
+texture = ExtResource("4_hcri2")
+
+[node name="Label" type="Label" parent="Control/TrapInfo"]
+layout_mode = 2
+offset_left = 44.0
+offset_top = 520.0
+offset_right = 577.0
+offset_bottom = 593.0
+theme_override_font_sizes/font_size = 25
+text = "This tricky spot could cause some 
+trouble if you step on it. Maybe try jumping?"
+horizontal_alignment = 1
+
+[node name="CheckpointInfo" type="Control" parent="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 60.0
+offset_top = 400.0
+offset_right = 60.0
+offset_bottom = 400.0
+
+[node name="Checkpoint" type="TextureRect" parent="Control/CheckpointInfo"]
+layout_mode = 2
+offset_left = 188.0
+offset_top = 275.0
+offset_right = 844.0
+offset_bottom = 791.0
+scale = Vector2(0.408731, 0.408731)
+texture = ExtResource("5_10hru")
+
+[node name="Label" type="Label" parent="Control/CheckpointInfo"]
+layout_mode = 2
+offset_left = 132.0
+offset_top = 518.0
+offset_right = 509.0
+offset_bottom = 629.0
+scale = Vector2(1.01901, 0.970528)
+theme_override_font_sizes/font_size = 25
+text = "This is the checkpoint! Reach it, 
+and you've successfully 
+escaped the maze!"
+horizontal_alignment = 1
+
+[node name="HeartInfo" type="Control" parent="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 660.0
+offset_top = 400.0
+offset_right = 660.0
+offset_bottom = 400.0
+
+[node name="Heart" type="TextureRect" parent="Control/HeartInfo"]
+layout_mode = 2
+offset_left = 190.0
+offset_top = 278.0
+offset_right = 846.0
+offset_bottom = 794.0
+scale = Vector2(0.374909, 0.374909)
+texture = ExtResource("2_vg184")
+
+[node name="Label" type="Label" parent="Control/HeartInfo"]
+layout_mode = 2
+offset_left = 140.0
+offset_top = 524.0
+offset_right = 478.0
+offset_bottom = 597.0
+theme_override_font_sizes/font_size = 25
+text = "The heart container 
+restores the player's health!
+"
+horizontal_alignment = 1
+
+[node name="CoinInfo" type="Control" parent="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1260.0
+offset_top = 400.0
+offset_right = 1260.0
+offset_bottom = 400.0
+
+[node name="Heart" type="TextureRect" parent="Control/CoinInfo"]
+layout_mode = 2
+offset_left = 189.0
+offset_top = 284.0
+offset_right = 943.0
+offset_bottom = 948.0
+scale = Vector2(0.336343, 0.338089)
+texture = ExtResource("2_d7phw")
+
+[node name="Label" type="Label" parent="Control/CoinInfo"]
+layout_mode = 2
+offset_left = 104.0
+offset_top = 526.0
+offset_right = 535.0
+offset_bottom = 599.0
+theme_override_font_sizes/font_size = 25
+text = "Collect the coins that appear 
+randomly throughout the maze!"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/GridContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/GridContainer/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="HBoxContainer/Next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="HBoxContainer/Back" to="." method="_on_back_pressed"]

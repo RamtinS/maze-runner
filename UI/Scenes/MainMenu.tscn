@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=3 uid="uid://xqalos2qb3op"]
+
+[ext_resource type="Script" path="res://UI/Scripts/main_menu.gd" id="1_h27jl"]
+[ext_resource type="Texture2D" uid="uid://c06w2j716qjxx" path="res://Pictures/maze_background.jpg" id="2_uv3kf"]
+[ext_resource type="AudioStream" uid="uid://ud8ry772g6sd" path="res://Audio/menu.mp3" id="3_8pied"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h27jl")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_uv3kf")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/v_separation = 10
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Maze Runner"
+
+[node name="Play" type="Button" parent="CanvasLayer/CenterContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Play"
+
+[node name="Tutorial" type="Button" parent="CanvasLayer/CenterContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Tutorial"
+
+[node name="Exit" type="Button" parent="CanvasLayer/CenterContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Exit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8pied")
+volume_db = -20.0
+autoplay = true
+
+[connection signal="pressed" from="CanvasLayer/CenterContainer/GridContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/GridContainer/Tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/GridContainer/Exit" to="." method="_on_exit_pressed"]

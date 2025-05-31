@@ -1,0 +1,113 @@
+[gd_scene load_steps=3 format=3 uid="uid://db31voynd5tfx"]
+
+[ext_resource type="Script" path="res://UI/Scripts/tutorial.gd" id="1_npwsu"]
+[ext_resource type="Texture2D" uid="uid://c06w2j716qjxx" path="res://Pictures/maze_background.jpg" id="2_al3a5"]
+
+[node name="Tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_npwsu")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_al3a5")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.103
+anchor_right = 0.5
+anchor_bottom = 0.103
+offset_left = -113.0
+offset_top = -41.24
+offset_right = 113.0
+offset_bottom = 41.76
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 60
+text = "Tutorial"
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.108
+anchor_top = 0.128
+anchor_right = 0.125
+anchor_bottom = 0.128
+offset_left = -137.36
+offset_top = -67.24
+offset_right = 135.64
+offset_bottom = 68.76
+theme_override_constants/v_separation = 10
+
+[node name="Play" type="Button" parent="CanvasLayer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Play game"
+
+[node name="Menu" type="Button" parent="CanvasLayer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Back to menu"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.506
+anchor_top = 0.528
+anchor_right = 0.506
+anchor_bottom = 0.528
+offset_left = -509.52
+offset_top = -318.24
+offset_right = 502.48
+offset_bottom = 322.76
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "To navigate the player through the maze, use the following controls:  
+
+- W to move forward  
+- S to move backward  
+- A to move left  
+- D to move right  
+
+You can look around by moving the mouse. 
+
+Press C to switch the camera perspective between 3D and 2D views."
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -326.0
+offset_top = 56.0
+offset_right = -106.0
+offset_bottom = 156.0
+grow_horizontal = 0
+theme_override_constants/separation = 20
+
+[node name="Next" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Next"
+
+[node name="Back" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Back
+"
+
+[connection signal="pressed" from="CanvasLayer/GridContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/GridContainer/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/Next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/Back" to="." method="_on_back_pressed"]

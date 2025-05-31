@@ -1,0 +1,129 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfg28xvn4k10c"]
+
+[ext_resource type="Script" path="res://UI/Scripts/tutorial_3.gd" id="1_1nerd"]
+[ext_resource type="Texture2D" uid="uid://je60dy35lv1q" path="res://Pictures/Tutorial/Monster.png" id="2_33uk5"]
+[ext_resource type="Texture2D" uid="uid://c06w2j716qjxx" path="res://Pictures/maze_background.jpg" id="2_uxj6x"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1nerd")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_uxj6x")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.103
+anchor_right = 0.5
+anchor_bottom = 0.103
+offset_left = -113.0
+offset_top = -41.24
+offset_right = 113.0
+offset_bottom = 41.76
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 60
+text = "Tutorial"
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.108
+anchor_top = 0.128
+anchor_right = 0.108
+anchor_bottom = 0.128
+offset_left = -137.36
+offset_top = -68.24
+offset_right = 135.64
+offset_bottom = 67.76
+theme_override_constants/v_separation = 10
+
+[node name="Play" type="Button" parent="CanvasLayer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Play game"
+
+[node name="Menu" type="Button" parent="CanvasLayer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Back to menu"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -326.0
+offset_top = 56.0
+offset_right = -106.0
+offset_bottom = 156.0
+grow_horizontal = 0
+theme_override_constants/separation = 20
+
+[node name="Next" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Next"
+
+[node name="Back" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Back
+"
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -970.0
+offset_top = -518.0
+offset_right = -930.0
+offset_bottom = -478.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.506
+anchor_top = 0.528
+anchor_right = 0.506
+anchor_bottom = 0.528
+offset_left = 557.76
+offset_top = 752.88
+offset_right = 1457.76
+offset_bottom = 878.88
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "The monster prowls the maze, always on the hunt for its next meal. Stay alert and avoid its grasp if you want to survive!"
+fit_content = true
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 728.0
+offset_top = 234.0
+offset_right = 1562.0
+offset_bottom = 1072.0
+scale = Vector2(0.605694, 0.617907)
+texture = ExtResource("2_33uk5")
+
+[connection signal="pressed" from="CanvasLayer/GridContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/GridContainer/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/Next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/Back" to="." method="_on_back_pressed"]

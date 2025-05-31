@@ -1,0 +1,89 @@
+[gd_scene load_steps=6 format=3 uid="uid://woq2nvnt7ayv"]
+
+[ext_resource type="Script" path="res://UI/Scripts/player_stats.gd" id="1_7rfam"]
+[ext_resource type="Texture2D" uid="uid://bdmjj8vt3crnh" path="res://Pictures/gold_coin.png" id="2_d4qe7"]
+[ext_resource type="Texture2D" uid="uid://ce2prhkherg5h" path="res://Pictures/heart.png" id="3_q57hv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xmp55"]
+bg_color = Color(1, 0.641748, 0.58665, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ph0j8"]
+bg_color = Color(1, 0, 0, 1)
+
+[node name="PlayerStats" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_7rfam")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Coin" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.866
+anchor_top = 0.934
+anchor_right = 0.866
+anchor_bottom = 0.934
+offset_left = -112.72
+offset_top = -18.72
+offset_right = 549.28
+offset_bottom = 358.28
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_d4qe7")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.861
+anchor_top = 0.933
+anchor_right = 0.861
+anchor_bottom = 0.933
+offset_left = -223.12
+offset_top = -37.64
+offset_right = 222.88
+offset_bottom = 38.36
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 105
+
+[node name="CoinLabel" type="Label" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 55
+text = "00/00"
+
+[node name="TimeLabel" type="Label" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 55
+text = "00:00:00"
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.115
+anchor_top = 0.097
+anchor_right = 0.115
+anchor_bottom = 0.097
+offset_left = -150.8
+offset_top = -34.76
+offset_right = 149.2
+offset_bottom = 35.24
+theme_override_font_sizes/font_size = 45
+theme_override_styles/background = SubResource("StyleBoxFlat_xmp55")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ph0j8")
+
+[node name="Heart" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.116
+anchor_top = 0.097
+anchor_right = 0.116
+anchor_bottom = 0.097
+offset_left = 147.28
+offset_top = -33.76
+offset_right = 1137.28
+offset_bottom = 646.24
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_q57hv")
