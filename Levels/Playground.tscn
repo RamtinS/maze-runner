@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://da8l0w3iyx477"]
+
+[ext_resource type="PackedScene" uid="uid://c61crhq4sivdo" path="res://Levels/Maze/Maze.tscn" id="2_thq8p"]
+[ext_resource type="PackedScene" uid="uid://btucnv55w1ae4" path="res://UI/Scenes/PauseScene.tscn" id="3_3gbse"]
+[ext_resource type="PackedScene" uid="uid://woq2nvnt7ayv" path="res://UI/Scenes/PlayerStats.tscn" id="3_hredl"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vpaar"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_wgtje"]
+sky_material = SubResource("ProceduralSkyMaterial_vpaar")
+
+[sub_resource type="Environment" id="Environment_nvt0n"]
+background_mode = 2
+sky = SubResource("Sky_wgtje")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_nvt0n")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Maze" parent="." instance=ExtResource("2_thq8p")]
+
+[node name="PlayerStats" parent="." instance=ExtResource("3_hredl")]
+
+[node name="ColorRect" parent="." instance=ExtResource("3_3gbse")]

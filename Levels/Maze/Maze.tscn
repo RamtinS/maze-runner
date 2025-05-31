@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://c61crhq4sivdo"]
+
+[ext_resource type="MeshLibrary" uid="uid://c66o56fpwo536" path="res://Levels/Maze/maze_mesh_library.tres" id="1_oxhd3"]
+[ext_resource type="Script" path="res://Levels/Maze/generate_maze.gd" id="1_xsc3w"]
+[ext_resource type="PackedScene" uid="uid://caf0ermqrndy5" path="res://Character/Player/PlayerModel.tscn" id="4_3mx8k"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o86q8"]
+
+[sub_resource type="Sky" id="Sky_gq3km"]
+sky_material = SubResource("ProceduralSkyMaterial_o86q8")
+
+[sub_resource type="Environment" id="Environment_i31qx"]
+background_mode = 2
+sky = SubResource("Sky_gq3km")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_1rpn2"]
+vertices = PackedVector3Array(-97, 7, -78.25, -96.5, 7, -78, -96.25, 7, -78.5, -97, 7, -80.5, -68, 7, -78.5, -68, 7, -80.5, 96.25, 7, -78.5, 96.5, 7, -78, 97, 7, -78, 97, 7, -80.5, 68, 7, -80.5, 68, 7, -78.5, -96.5, 7, 81, -97.25, 7, -77.5, -97.25, 7, 80.5, -97, 7, 81, -98.5, 7, -77.5, -98.5, 7, 80.5, 96.5, 7, 80.75, 97, 7, 81, 97.25, 7, 80.5, 97.25, 7, -77.5, 98.5, 7, 80.5, 98.5, 7, -77.5, -95.25, 1, -77.25, -95.25, 1, 80.5, 95.5, 1, 80.5, 95.5, 1, -77.25, 96.75, 1, -77.25, 96.75, 1, 80.5, 98.5, 1, 80.5, 98.5, 1, -77.25, 96.25, 7, 81.5, 97, 7, 83.5, 68, 7, 81.5, 68, 7, 83.5, -96.25, 7, 81.5, -97, 7, 83.5, -68, 7, 83.5, -68, 7, 81.5)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(4, 2, 5), PackedInt32Array(5, 2, 3), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(11, 10, 6), PackedInt32Array(6, 10, 9), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(12, 13, 1), PackedInt32Array(1, 13, 0), PackedInt32Array(14, 17, 13), PackedInt32Array(13, 17, 16), PackedInt32Array(19, 18, 20), PackedInt32Array(20, 18, 21), PackedInt32Array(21, 18, 8), PackedInt32Array(8, 18, 7), PackedInt32Array(21, 23, 20), PackedInt32Array(20, 23, 22), PackedInt32Array(27, 26, 24), PackedInt32Array(24, 26, 25), PackedInt32Array(31, 30, 28), PackedInt32Array(28, 30, 29), PackedInt32Array(18, 19, 32), PackedInt32Array(32, 19, 33), PackedInt32Array(34, 32, 35), PackedInt32Array(35, 32, 33), PackedInt32Array(12, 36, 15), PackedInt32Array(15, 36, 37), PackedInt32Array(39, 38, 36), PackedInt32Array(36, 38, 37)]
+cell_height = 0.1
+agent_radius = 1.2
+
+[node name="Maze" type="Node3D"]
+script = ExtResource("1_xsc3w")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_i31qx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0.5, 126, 0.5)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_1rpn2")
+
+[node name="GridMap" type="GridMap" parent="NavigationRegion3D"]
+mesh_library = ExtResource("1_oxhd3")
+cell_size = Vector3(3, 1, 3)
+data = {
+"cells": PackedInt32Array(0, 0, 0, 65503, 0, 4, 32, 0, 4, 0, 65509, 3, 0, 27, 3)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+metadata/_edit_group_ = true
+
+[node name="Player" parent="." instance=ExtResource("4_3mx8k")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
+
+[connection signal="coins_placed" from="." to="Player" method="_on_maze_coins_placed"]
+[connection signal="health_placed" from="." to="Player" method="_on_maze_health_placed"]
